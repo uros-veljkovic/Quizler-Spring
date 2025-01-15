@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest
 class QuestionServiceTest {
 
     val question = Question(
-        id = 1,
         text = "Question",
         isApproved = false,
         numberOfTimesReported = 0,
@@ -22,14 +21,10 @@ class QuestionServiceTest {
     )
 
     @Autowired
-    lateinit var repository: QuestionRepository
-
-    @Autowired
     private lateinit var service: QuestionService
 
     @Test
     fun `test save should save question using repository`() {
-        repository.deleteAll()
         val result = service.save(question)
 
         assertEquals(question, result)

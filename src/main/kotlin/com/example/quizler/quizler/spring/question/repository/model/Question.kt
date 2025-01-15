@@ -23,7 +23,7 @@ data class Question(
 
     @Column(nullable = false)
     @NotBlank(message = "Category ID should not be blank!")
-    val categoryId: String,
+    val categoryId: String = "",
 
     @OneToMany(mappedBy = "question", cascade = [CascadeType.ALL], orphanRemoval = true)
     @Size(min = 1, message = "Question must have at least one answer!")
