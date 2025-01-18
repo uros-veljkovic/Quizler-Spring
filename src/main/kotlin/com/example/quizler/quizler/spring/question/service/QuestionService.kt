@@ -9,29 +9,47 @@ class QuestionService(
     private val repository: QuestionRepository,
 ) {
 
-    fun save(question: Question) = repository.save(question)
+    fun getOne(id: Long): Question {
+        return repository.findById(id).orElseThrow { QuestionNotFoundException(id) }
+    }
 
-    fun updateCount(questionId: Long, isCorrect: Boolean): Question {
+    fun getAll(): List<Question> {
+        return repository.findAll()
+    }
+
+    fun save(question: Question): Question {
+        return repository.save(question)
+    }
+
+    fun saveAnswer(questionId: Long, isCorrect: Boolean): Question {
         repository
             .findById(questionId)
-            .orElseThrow {
-                QuestionNotFoundException(questionId)
-            }.run {
-                val countAnsweredCorrectUpdated = countAnsweredCorrect.takeIf {
+            .orElseThrow { QuestionNotFoundException(questionId) }
+            .run {
+
+                val correctCount = countAnsweredCorrect.takeIf {
                     isCorrect.not()
                 } ?: countAnsweredCorrect.inc()
 
-                val countAnsweredWrongUpdated = countAnsweredWrong.takeIf {
+                val wrongCount = countAnsweredWrong.takeIf {
                     isCorrect
                 } ?: countAnsweredWrong.inc()
                 return repository.save(
                     copy(
-                        countAnsweredCorrect = countAnsweredCorrectUpdated,
-                        countAnsweredWrong = countAnsweredWrongUpdated
+                        countAnsweredCorrect = correctCount,
+                        countAnsweredWrong = wrongCount
                     )
                 )
             }
     }
+
+    fun reportQuestion(id: Long) {
+        repository
+            .findById(id)
+            .orElseThrow { QuestionNotFoundException(id) }
+            ?.run {
+                repository.save(copy(numberOfTimesReported = numberOfTimesReported + 1))
+            }
+    }
 }
 
-class QuestionNotFoundException(id: Long) : Exception("Question with ID: $id has not been found !")

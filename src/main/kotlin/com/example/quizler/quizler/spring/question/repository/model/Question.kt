@@ -12,7 +12,6 @@ data class Question(
     val id: Long = 0,
 
     @Column(nullable = false) val text: String = "",
-
     val isApproved: Boolean = false,
 
     val numberOfTimesReported: Int = 0,
@@ -25,10 +24,11 @@ data class Question(
     @NotBlank(message = "Category ID should not be blank!")
     val categoryId: String = "",
 
-    @OneToMany(mappedBy = "question", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @Size(min = 1, message = "Question must have at least one answer!")
     val answers: List<Answer> = mutableListOf(),
 
     @Version
     val version: Long = 0
 )
+
