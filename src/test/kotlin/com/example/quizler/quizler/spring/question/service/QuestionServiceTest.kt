@@ -10,9 +10,14 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.transaction.annotation.Transactional
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-class QuestionServiceTest {
+@Transactional
+class QuestionServiceTest @Autowired constructor(
+    private val repository: QuestionRepository,
+    private val service: QuestionService
+) {
 
     val question = Question(
         text = "Question",
@@ -23,11 +28,6 @@ class QuestionServiceTest {
         categoryId = "Geography",
     )
 
-    @Autowired
-    private lateinit var repository: QuestionRepository
-
-    @Autowired
-    private lateinit var service: QuestionService
 
     @AfterEach
     fun afterEach() {
