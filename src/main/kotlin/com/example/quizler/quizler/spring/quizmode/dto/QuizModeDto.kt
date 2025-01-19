@@ -1,4 +1,4 @@
-package com.example.quizler.quizler.spring.quizmode
+package com.example.quizler.quizler.spring.quizmode.dto
 
 data class QuizModeDto(
     val id: Long?,

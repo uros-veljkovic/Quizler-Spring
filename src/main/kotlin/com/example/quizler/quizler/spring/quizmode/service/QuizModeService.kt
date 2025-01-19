@@ -1,7 +1,7 @@
 package com.example.quizler.quizler.spring.quizmode.service
 
-import com.example.quizler.quizler.spring.quizmode.QuizMode
-import com.example.quizler.quizler.spring.quizmode.QuizModeRepository
+import com.example.quizler.quizler.spring.quizmode.model.QuizMode
+import com.example.quizler.quizler.spring.quizmode.repository.QuizModeRepository
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,4 +1,4 @@
-package com.example.quizler.quizler.spring.quizmode
+package com.example.quizler.quizler.spring.quizmode.model
 
 import jakarta.persistence.*
 

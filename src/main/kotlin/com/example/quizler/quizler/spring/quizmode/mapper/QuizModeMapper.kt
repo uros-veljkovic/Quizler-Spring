@@ -1,9 +1,9 @@
 package com.example.quizler.quizler.spring.quizmode.mapper
 
-import com.example.quizler.quizler.spring.quizmode.QuizMode
-import com.example.quizler.quizler.spring.quizmode.QuizModeDto
-import com.example.quizler.quizler.spring.quizmode.SubMode
-import com.example.quizler.quizler.spring.quizmode.SubModeDto
+import com.example.quizler.quizler.spring.quizmode.model.QuizMode
+import com.example.quizler.quizler.spring.quizmode.dto.QuizModeDto
+import com.example.quizler.quizler.spring.quizmode.model.SubMode
+import com.example.quizler.quizler.spring.quizmode.dto.SubModeDto
 import org.springframework.stereotype.Component
 
 @Component

@@ -1,6 +1,6 @@
 package com.example.quizler.quizler.spring.quizmode.controller
 
-import com.example.quizler.quizler.spring.quizmode.QuizModeDto
+import com.example.quizler.quizler.spring.quizmode.dto.QuizModeDto
 import com.example.quizler.quizler.spring.quizmode.mapper.QuizModeMapper
 import com.example.quizler.quizler.spring.quizmode.service.QuizModeService
 import org.springframework.http.ResponseEntity
