@@ -18,6 +18,7 @@
 .settings
 .springBeans
 .idea
+src/main/resources/static/db_files/*.json
 /code
 MANIFEST.MF
 _site/

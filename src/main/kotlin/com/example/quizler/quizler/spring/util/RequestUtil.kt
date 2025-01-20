@@ -1,9 +1,7 @@
 package com.example.quizler.quizler.spring.util
 
-import org.mapstruct.Mapper
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-
 
 fun <T> handleRequest(operation: () -> T): ResponseEntity<T> {
     return try {
